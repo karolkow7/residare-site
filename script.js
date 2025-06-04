@@ -1,0 +1,1 @@
+console.log('Residare MVP geladen.');
