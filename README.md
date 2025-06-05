@@ -1,0 +1,1 @@
+# Residare – MVP mit Hero, Parallax, Logo und Responsivem Design
