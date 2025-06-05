@@ -1,1 +1,0 @@
-console.log('Residare – Hero mit lokalem Bild geladen.');
