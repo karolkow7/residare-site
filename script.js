@@ -1,0 +1,1 @@
+console.log('Hero mit Zoom & Stil geladen');
