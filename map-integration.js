@@ -1,1 +1,0 @@
-Dummy content for map-integration.js
