@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Residare – Deutsch-Polnische Immobilien</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/img/logo.png" type="image/png" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/img/logo.png" alt="Residare Logo" />
+    </div>
+    <div class="language-switcher">
+      <img src="assets/img/flag-de.png" alt="Deutsch" onclick="switchLanguage('de')" />
+      <img src="assets/img/flag-pl.png" alt="Polski" onclick="switchLanguage('pl')" />
+    </div>
+  </header>
+
+  <main>
+    <h1 data-i18n="welcome">Willkommen bei Residare</h1>
+    <p data-i18n="subtitle">Deine Plattform für deutsch-polnische Immobilien.</p>
+    <a href="listings.html" class="btn" data-i18n="explore">Jetzt Angebote entdecken</a>
+  </main>
+
+  <footer>
+    <a href="faq.html" data-i18n="faq">FAQ</a> |
+    <a href="kontakt.html" data-i18n="contact">Kontakt</a> |
+    <a href="impressum.html" data-i18n="impressum">Impressum</a>
+  </footer>
+
+  <script src="assets/js/lang-switcher.js"></script>
+  <script src="assets/js/translations.js"></script>
+</body>
+</html>
