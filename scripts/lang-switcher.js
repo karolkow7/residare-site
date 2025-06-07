@@ -1,1 +1,0 @@
-// Dummy JS for language switching
