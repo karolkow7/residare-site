@@ -10,14 +10,43 @@
       position: absolute;
       top: 10px;
       right: 10px;
+      position: absolute;
     }
-    .language-dropdown img {
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    .dropdown-toggle img {
       width: 32px;
       height: 24px;
-      margin-left: 8px;
-      cursor: pointer;
       border: 1px solid #ccc;
       border-radius: 2px;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      z-index: 999;
+      padding: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .dropdown-menu img {
+      display: block;
+      width: 32px;
+      height: 24px;
+      margin: 4px 0;
+      cursor: pointer;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
     }
   </style>
 </head>
@@ -31,8 +60,15 @@
       <a href="impressum.html" data-key="nav.impressum">Impressum</a>
     </nav>
     <div class="language-dropdown">
-      <img src="flags/flag_de.png" alt="Deutsch" onclick="setLanguage('de')">
-      <img src="flags/flag_pl.png" alt="Polski" onclick="setLanguage('pl')">
+      <div class="dropdown">
+        <button class="dropdown-toggle" id="current-flag">
+          <img src="flags/flag_de.png" alt="Sprache">
+        </button>
+        <div class="dropdown-menu">
+          <img src="flags/flag_de.png" alt="Deutsch" onclick="setLanguage('de')">
+          <img src="flags/flag_pl.png" alt="Polski" onclick="setLanguage('pl')">
+        </div>
+      </div>
     </div>
   </header>
   <main>
@@ -64,6 +100,8 @@
           });
         });
       localStorage.setItem("lang", lang);
+      const currentFlag = document.getElementById("current-flag").querySelector("img");
+      currentFlag.src = "flags/flag_" + lang + ".png";
     }
   </script>
 </body>
