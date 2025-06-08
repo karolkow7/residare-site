@@ -6,74 +6,38 @@
   <title>Residare – Impressum</title>
   <link rel="stylesheet" href="style.css">
   <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  .menu-toggle {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1001;
-    background: none;
-    border: none;
-  }
-  nav#main-nav {
-    position: fixed;
-    top: 0;
-    left: -200px;
-    width: 200px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-    padding: 20px;
-    box-sizing: border-box;
-    transition: left 0.3s ease-in-out;
-    z-index: 1000;
-  }
-  nav#main-nav.active {
-    left: 0;
-  }
-  nav#main-nav a {
-    display: block;
-    margin: 10px 0;
-    color: #333;
-    text-decoration: none;
-  }
-  footer {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px;
-    font-size: 0.9em;
-    color: #666;
-  }
-</style>
+    body { margin: 0; font-family: Arial, sans-serif; }
     .menu-toggle {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 10px;
-}
+      position: absolute;
+      top: 10px;
+      left: 10px;
       font-size: 24px;
       cursor: pointer;
-      padding: 10px;
+      z-index: 1001;
+      background: none;
+      border: none;
     }
-    nav.hidden {
-      display: none;
+    nav#main-nav {
+      position: fixed;
+      top: 0;
+      left: -200px;
+      width: 200px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+      padding: 20px;
+      box-sizing: border-box;
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
     }
-    nav a {
+    nav#main-nav.active {
+      left: 0;
+    }
+    nav#main-nav a {
       display: block;
-      padding: 8px 0;
+      margin: 10px 0;
       color: #333;
       text-decoration: none;
-    }
-    main {
-      max-width: 800px;
-      margin: 20px auto;
     }
     footer {
       text-align: center;
@@ -83,42 +47,104 @@
       color: #666;
     }
   </style>
+<style>
+  .language-dropdown {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .dropdown-toggle img {
+    width: 32px;
+    height: 24px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+  }
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 999;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .dropdown-menu img {
+    display: block;
+    width: 32px;
+    height: 24px;
+    margin: 4px 0;
+    cursor: pointer;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+</style>
+<script src="translate.js"></script>
+<script>
+  function setLanguage(lang) {
+    localStorage.setItem('language', lang);
+    document.getElementById('selected-flag').src = 'flags/flag_' + lang + '.png';
+    loadLanguage(lang);
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const lang = localStorage.getItem('language') || 'de';
+    document.getElementById('selected-flag').src = 'flags/flag_' + lang + '.png';
+    loadLanguage(lang);
+  });
+</script>
+
 </head>
 <body>
   <header>
-    <button id="menu-toggle" class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <nav id="main-nav" class="hidden">
+    <button id="menu-toggle" class="menu-toggle">☰</button>
+    <nav id="main-nav">
       <a href="index.html" data-key="nav.home">Start</a>
       <a href="listings.html" data-key="nav.listings">Angebote</a>
       <a href="faq.html" data-key="nav.faq">FAQ</a>
       <a href="kontakt.html" data-key="nav.contact">Kontakt</a>
       <a href="impressum.html" data-key="nav.impressum">Impressum</a>
     </nav>
-  </header>
-  <main>
-    <h1 data-key="impressum.title">Impressum</h1>
-    <p>Residare GmbH<br>
-    Beispielstraße 1<br>
-    12345 Musterstadt<br>
-    Deutschland</p>
-    <p>E-Mail: kontakt@residare.com</p>
-  </main>
+  
+<div class="language-dropdown">
+  <div class="dropdown">
+    <button class="dropdown-toggle"><img id="selected-flag" src="flags/flag_de.png" alt="Sprache"></button>
+    <div class="dropdown-menu">
+      <img src="flags/flag_de.png" alt="Deutsch" onclick="setLanguage('de')">
+      <img src="flags/flag_pl.png" alt="Polski" onclick="setLanguage('pl')">
+    </div>
+  </div>
+</div>
+
+</header>
+  
+    <main>
+      <h1 data-key="impressum.title">Impressum</h1>
+      <p>Residare GmbH<br>
+      Beispielstraße 1<br>
+      12345 Musterstadt<br>
+      Deutschland</p>
+      <p>E-Mail: kontakt@residare.com</p>
+    </main>
+        
   <footer>
     <p>&copy; <span id="year"></span> Residare. Alle Rechte vorbehalten.</p>
   </footer>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    function toggleMenu() {
-      const nav = document.getElementById("main-nav");
-      nav.classList.toggle("hidden");
-    }
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('menu-toggle').addEventListener('click', function() {
+    document.getElementById('menu-toggle').addEventListener('click', function () {
       document.getElementById('main-nav').classList.toggle('active');
     });
-    document.getElementById("year").textContent = new Date().getFullYear();
-  });
-</script></script>
+  </script>
 </body>
 </html>

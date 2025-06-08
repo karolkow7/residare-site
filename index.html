@@ -6,68 +6,39 @@
   <title>Residare</title>
   <link rel="stylesheet" href="style.css">
   <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  .menu-toggle {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1001;
-    background: none;
-    border: none;
-  }
-  nav#main-nav {
-    position: fixed;
-    top: 0;
-    left: -200px;
-    width: 200px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-    padding: 20px;
-    box-sizing: border-box;
-    transition: left 0.3s ease-in-out;
-    z-index: 1000;
-  }
-  nav#main-nav.active {
-    left: 0;
-  }
-  nav#main-nav a {
-    display: block;
-    margin: 10px 0;
-    color: #333;
-    text-decoration: none;
-  }
-  footer {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px;
-    font-size: 0.9em;
-    color: #666;
-  }
-</style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
     .menu-toggle {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 10px;
-}
+      position: absolute;
+      top: 10px;
+      left: 10px;
       font-size: 24px;
       cursor: pointer;
-      padding: 10px;
+      z-index: 1001;
+      background: none;
+      border: none;
     }
-    nav.hidden {
-      display: none;
+    nav#main-nav {
+      position: fixed;
+      top: 0;
+      left: -200px;
+      width: 200px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+      padding: 20px;
+      box-sizing: border-box;
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
     }
-    nav a {
+    nav#main-nav.active {
+      left: 0;
+    }
+    nav#main-nav a {
       display: block;
-      padding: 8px 0;
+      margin: 10px 0;
       color: #333;
       text-decoration: none;
     }
@@ -143,8 +114,8 @@
 </head>
 <body>
   <header>
-    <button id="menu-toggle" class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <nav id="main-nav" class="hidden">
+    <button id="menu-toggle" class="menu-toggle">☰</button>
+    <nav id="main-nav">
       <a href="index.html" data-key="nav.home">Start</a>
       <a href="listings.html" data-key="nav.listings">Angebote</a>
       <a href="faq.html" data-key="nav.faq">FAQ</a>
@@ -153,9 +124,7 @@
     </nav>
     <div class="language-dropdown">
       <div class="dropdown">
-        <button class="dropdown-toggle" id="current-flag">
-          <img src="flags/flag_de.png" alt="Sprache">
-        </button>
+        <button class="dropdown-toggle"><img id="selected-flag" src="flags/flag_de.png" alt="Sprache"></button>
         <div class="dropdown-menu">
           <img src="flags/flag_de.png" alt="Deutsch" onclick="setLanguage('de')">
           <img src="flags/flag_pl.png" alt="Polski" onclick="setLanguage('pl')">
@@ -163,66 +132,41 @@
       </div>
     </div>
   </header>
+
   <main>
     <div class="hero-wrapper">
-      <img src="hero_gdansk.jpg" alt="Herobild Gdańsk" class="hero-background">
+      <img src="hero_gdansk.jpg" alt="Hero" class="hero-background">
       <img src="logo.png" alt="Residare Logo" class="hero-logo">
     </div>
     <h1 data-key="title">Willkommen bei Residare</h1>
     <p data-key="subtitle">Finden Sie Ihr neues Zuhause in Polen oder Deutschland.</p>
     <div id="map" style="height: 400px;"></div>
   </main>
+
   <footer>
     <p>&copy; <span id="year"></span> Residare. Alle Rechte vorbehalten.</p>
   </footer>
-  <script src="map.js"><script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-      document.getElementById('main-nav').classList.toggle('active');
-    });
-    document.getElementById("year").textContent = new Date().getFullYear();
-  });
-</script></script>
-  <script src="translate.js"><script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-      document.getElementById('main-nav').classList.toggle('active');
-    });
-    document.getElementById("year").textContent = new Date().getFullYear();
-  });
-</script></script>
+
+  <script src="map.js"></script>
+  <script src="translate.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    function toggleMenu() {
-      const nav = document.getElementById("main-nav");
-      nav.classList.toggle("hidden");
-    }
-    document.addEventListener("DOMContentLoaded", function () {
-      const lang = localStorage.getItem("lang") || "de";
-      setLanguage(lang);
+
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      document.getElementById('main-nav').classList.toggle('active');
     });
+
     function setLanguage(lang) {
-      fetch('lang/' + lang + '.json')
-        .then(res => res.json())
-        .then(data => {
-          document.querySelectorAll('[data-key]').forEach(el => {
-            const key = el.getAttribute('data-key').split('.');
-            let value = data;
-            key.forEach(k => value = value[k]);
-            if (value) el.innerText = value;
-          });
-        });
-      localStorage.setItem("lang", lang);
-      const currentFlag = document.getElementById("current-flag").querySelector("img");
-      currentFlag.src = "flags/flag_" + lang + ".png";
+      localStorage.setItem('language', lang);
+      document.getElementById('selected-flag').src = 'flags/flag_' + lang + '.png';
+      loadLanguage(lang);
     }
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-      document.getElementById('main-nav').classList.toggle('active');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = localStorage.getItem('language') || 'de';
+      document.getElementById('selected-flag').src = 'flags/flag_' + lang + '.png';
+      loadLanguage(lang);
     });
-    document.getElementById("year").textContent = new Date().getFullYear();
-  });
-</script></script>
+  </script>
 </body>
 </html>

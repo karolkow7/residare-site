@@ -3,79 +3,41 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Residare – Immobilienangebote</title>
+  <title>Residare – Angebote</title>
   <link rel="stylesheet" href="style.css">
   <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  .menu-toggle {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1001;
-    background: none;
-    border: none;
-  }
-  nav#main-nav {
-    position: fixed;
-    top: 0;
-    left: -200px;
-    width: 200px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-    padding: 20px;
-    box-sizing: border-box;
-    transition: left 0.3s ease-in-out;
-    z-index: 1000;
-  }
-  nav#main-nav.active {
-    left: 0;
-  }
-  nav#main-nav a {
-    display: block;
-    margin: 10px 0;
-    color: #333;
-    text-decoration: none;
-  }
-  footer {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px;
-    font-size: 0.9em;
-    color: #666;
-  }
-</style>
+    body { margin: 0; font-family: Arial, sans-serif; }
     .menu-toggle {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 10px;
-}
+      position: absolute;
+      top: 10px;
+      left: 10px;
       font-size: 24px;
       cursor: pointer;
-      padding: 10px;
+      z-index: 1001;
+      background: none;
+      border: none;
     }
-    nav.hidden {
-      display: none;
+    nav#main-nav {
+      position: fixed;
+      top: 0;
+      left: -200px;
+      width: 200px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+      padding: 20px;
+      box-sizing: border-box;
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
     }
-    nav a {
+    nav#main-nav.active {
+      left: 0;
+    }
+    nav#main-nav a {
       display: block;
-      padding: 8px 0;
+      margin: 10px 0;
       color: #333;
       text-decoration: none;
-    }
-    .listing {
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin: 10px;
-      cursor: pointer;
     }
     footer {
       text-align: center;
@@ -85,85 +47,113 @@
       color: #666;
     }
   </style>
+<style>
+  .language-dropdown {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .dropdown-toggle img {
+    width: 32px;
+    height: 24px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+  }
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 999;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .dropdown-menu img {
+    display: block;
+    width: 32px;
+    height: 24px;
+    margin: 4px 0;
+    cursor: pointer;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+</style>
+<script src="translate.js"></script>
+<script>
+  function setLanguage(lang) {
+    localStorage.setItem('language', lang);
+    document.getElementById('selected-flag').src = 'flags/flag_' + lang + '.png';
+    loadLanguage(lang);
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const lang = localStorage.getItem('language') || 'de';
+    document.getElementById('selected-flag').src = 'flags/flag_' + lang + '.png';
+    loadLanguage(lang);
+  });
+</script>
+
 </head>
 <body>
   <header>
-    <button id="menu-toggle" class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <nav id="main-nav" class="hidden">
+    <button id="menu-toggle" class="menu-toggle">☰</button>
+    <nav id="main-nav">
       <a href="index.html" data-key="nav.home">Start</a>
       <a href="listings.html" data-key="nav.listings">Angebote</a>
       <a href="faq.html" data-key="nav.faq">FAQ</a>
       <a href="kontakt.html" data-key="nav.contact">Kontakt</a>
       <a href="impressum.html" data-key="nav.impressum">Impressum</a>
     </nav>
-  </header>
-  <main>
-    <h1 data-key="title">Immobilienangebote</h1>
-    <div class="listing" onmouseover="highlightMarker(0)" onmouseout="resetMarker(0)">
-      <a href="#"><strong>Charmante Wohnung in Wrzeszcz</strong></a>
-      <p>3 Zimmer, 70 m², 320.000 PLN</p>
+  
+<div class="language-dropdown">
+  <div class="dropdown">
+    <button class="dropdown-toggle"><img id="selected-flag" src="flags/flag_de.png" alt="Sprache"></button>
+    <div class="dropdown-menu">
+      <img src="flags/flag_de.png" alt="Deutsch" onclick="setLanguage('de')">
+      <img src="flags/flag_pl.png" alt="Polski" onclick="setLanguage('pl')">
     </div>
-    <div class="listing" onmouseover="highlightMarker(1)" onmouseout="resetMarker(1)">
-      <a href="#"><strong>Modernes Apartment in Oliwa</strong></a>
-      <p>2 Zimmer, 55 m², 380.000 PLN</p>
-    </div>
-    <div class="listing" onmouseover="highlightMarker(2)" onmouseout="resetMarker(2)">
-      <a href="#"><strong>Altbau im Zentrum – Śródmieście</strong></a>
-      <p>4 Zimmer, 90 m², 450.000 PLN</p>
-    </div>
-    <div id="map" style="height: 400px;"></div>
-  </main>
+  </div>
+</div>
+
+</header>
+  
+    <main>
+      <h1 data-key="listings.title">Immobilienangebote</h1>
+      <div class="listing" data-location="Wrzeszcz">
+        <h2>Wohnung in Wrzeszcz</h2>
+        <p>3 Zimmer • 75 m² • 420.000 PLN</p>
+      </div>
+      <div class="listing" data-location="Oliwa">
+        <h2>Haus in Oliwa</h2>
+        <p>5 Zimmer • 140 m² • 1.250.000 PLN</p>
+      </div>
+      <div class="listing" data-location="Śródmieście">
+        <h2>Apartment in Śródmieście</h2>
+        <p>2 Zimmer • 60 m² • 360.000 PLN</p>
+      </div>
+      <div id="map" style="height: 400px; margin-top: 20px;"></div>
+    </main>
+    <script src="map.js"></script>
+        
   <footer>
     <p>&copy; <span id="year"></span> Residare. Alle Rechte vorbehalten.</p>
   </footer>
-  <script src="map.js"><script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-      document.getElementById('main-nav').classList.toggle('active');
-    });
-    document.getElementById("year").textContent = new Date().getFullYear();
-  });
-</script></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    function toggleMenu() {
-      const nav = document.getElementById("main-nav");
-      nav.classList.toggle("hidden");
-    }
-
-    let map, markers = [];
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: {lat: 54.3721, lng: 18.6383}
-      });
-      const locations = [
-        {title: 'Wrzeszcz', position: {lat: 54.3849, lng: 18.5913}},
-        {title: 'Oliwa', position: {lat: 54.4100, lng: 18.5600}},
-        {title: 'Śródmieście', position: {lat: 54.3520, lng: 18.6466}}
-      ];
-      locations.forEach(function(loc, index) {
-        const marker = new google.maps.Marker({ position: loc.position, map: map, title: loc.title });
-        markers.push(marker);
-      });
-    }
-
-    function highlightMarker(index) {
-      if (markers[index]) markers[index].setAnimation(google.maps.Animation.BOUNCE);
-    }
-
-    function resetMarker(index) {
-      if (markers[index]) markers[index].setAnimation(null);
-    }
-
-    window.onload = initMap;
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('menu-toggle').addEventListener('click', function() {
+    document.getElementById('menu-toggle').addEventListener('click', function () {
       document.getElementById('main-nav').classList.toggle('active');
     });
-    document.getElementById("year").textContent = new Date().getFullYear();
-  });
-</script></script>
+  </script>
 </body>
 </html>
