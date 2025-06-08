@@ -1,84 +1,116 @@
 
 <!DOCTYPE html>
+
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Residare – Kontakt</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #f9f9f9; }
+<meta charset="utf-8"/>
+<title>Residare</title>
+<link href="style.css" rel="stylesheet"/>
+<link href="favicon.png" rel="icon" type="image/png"/>
+<style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
     .menu-toggle {
-      position: absolute; top: 10px; left: 10px;
-      font-size: 24px; cursor: pointer; z-index: 1001; background: none; border: none;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1001;
+      background: none;
+      border: none;
     }
     nav#main-nav {
-      position: fixed; top: 50px; left: -200px; width: 200px; height: 100%;
-      background-color: #fff; box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-      padding: 20px; box-sizing: border-box;
-      transition: left 0.3s ease-in-out; z-index: 1000;
+      position: fixed;
+      top: 50px;
+      left: -200px;
+      width: 200px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+      padding: 20px;
+      box-sizing: border-box;
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
     }
-    nav#main-nav.active { left: 0; }
+    nav#main-nav.active {
+      left: 0;
+    }
     nav#main-nav a {
-      display: block; margin: 10px 0;
-      color: #333; text-decoration: none;
+      display: block;
+      margin: 10px 0;
+      color: #333;
+      text-decoration: none;
     }
     .language-dropdown {
-      position: absolute; top: 10px; right: 10px; z-index: 1002;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1002;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
     }
     .dropdown-toggle img {
-      width: 32px; height: 24px; border: 1px solid #ccc; border-radius: 2px;
+      width: 32px;
+      height: 24px;
+      border: 1px solid #ccc;
+      border-radius: 2px;
     }
     .dropdown-menu {
-      display: none; position: absolute; right: 0; background-color: #fff;
-      border: 1px solid #ccc; z-index: 999; padding: 4px;
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      z-index: 999;
+      padding: 4px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
     .dropdown-menu img {
-      display: block; width: 32px; height: 24px; margin: 4px 0; cursor: pointer;
-    }
-    .dropdown:hover .dropdown-menu { display: block; }
-
-    .contact-wrapper {
-      max-width: 600px;
-      margin: 100px auto 40px;
-      background: #fff;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    label {
       display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1em;
-      box-sizing: border-box;
-    }
-    textarea { resize: vertical; min-height: 120px; }
-    button {
-      margin-top: 20px;
-      padding: 12px 20px;
-      background-color: #0077cc;
-      color: white;
-      border: none;
-      border-radius: 4px;
+      width: 32px;
+      height: 24px;
+      margin: 4px 0;
       cursor: pointer;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .hero-wrapper {
+      position: relative;
+    }
+    .hero-background {
       width: 100%;
-      font-size: 1em;
+      max-height: 300px;
+      object-fit: cover;
+      animation: zoomInOut 10s infinite alternate ease-in-out;
+      z-index: 1;
+    }
+    .hero-logo {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      max-height: 80px;
+      z-index: 2;
+    }
+    @keyframes zoomInOut {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
     }
     footer {
       text-align: center;
+      margin-top: 40px;
       padding: 20px;
       font-size: 0.9em;
       color: #666;
@@ -86,52 +118,44 @@
   </style>
 </head>
 <body>
-  <button id="menu-toggle" class="menu-toggle">☰</button>
-  <nav id="main-nav">
-    <a href="index.html" data-key="nav.home">Start</a>
-    <a href="listings.html" data-key="nav.listings">Angebote</a>
-    <a href="faq.html" data-key="nav.faq">FAQ</a>
-    <a href="kontakt.html" data-key="nav.contact">Kontakt</a>
-    <a href="impressum.html" data-key="nav.impressum">Impressum</a>
-  </nav>
-
-  <div class="language-dropdown">
-    <div class="dropdown">
-      <button class="dropdown-toggle"><img id="selected-flag" src="flags/flag_de.png" alt="Sprache"></button>
-      <div class="dropdown-menu">
-        <img src="flags/flag_de.png" alt="Deutsch" onclick="setLanguage('de')">
-        <img src="flags/flag_pl.png" alt="Polski" onclick="setLanguage('pl')">
-      </div>
-    </div>
-  </div>
-
-  <main>
-    <div class="contact-wrapper">
-      <h1 data-key="title">Kontakt</h1>
-      <form>
-        <label for="name" data-key="form.name.label">Name</label>
-        <input type="text" id="name" name="name" placeholder="Ihr Name" data-key="form.name.placeholder">
-
-        <label for="email" data-key="form.email.label">E-Mail</label>
-        <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" data-key="form.email.placeholder">
-
-        <label for="phone" data-key="form.phone.label">Telefon (optional)</label>
-        <input type="tel" id="phone" name="phone" placeholder="Ihre Telefonnummer" data-key="form.phone.placeholder">
-
-        <label for="message" data-key="form.message.label">Nachricht</label>
-        <textarea id="message" name="message" placeholder="Ihre Nachricht..." data-key="form.message.placeholder"></textarea>
-
-        <button type="submit" data-key="form.submit">Absenden</button>
-      </form>
-    </div>
-  </main>
-
-  <footer>
-    <p>&copy; <span id="year"></span> Residare. Alle Rechte vorbehalten.</p>
-  </footer>
-
-  <script src="translate.js"></script>
-  <script>
+<button class="menu-toggle" id="menu-toggle">☰</button>
+<nav id="main-nav">
+<a data-key="nav.home" href="index.html">Start</a>
+<a data-key="nav.listings" href="listings.html">Angebote</a>
+<a data-key="nav.faq" href="faq.html">FAQ</a>
+<a data-key="nav.contact" href="kontakt.html">Kontakt</a>
+<a data-key="nav.impressum" href="impressum.html">Impressum</a>
+</nav>
+<div class="language-dropdown">
+<div class="dropdown">
+<button class="dropdown-toggle"><img alt="Sprache" id="selected-flag" src="flags/flag_de.png"/></button>
+<div class="dropdown-menu">
+<img alt="Deutsch" onclick="setLanguage('de')" src="flags/flag_de.png"/>
+<img alt="Polski" onclick="setLanguage('pl')" src="flags/flag_pl.png"/>
+</div>
+</div>
+</div>
+<main>
+<div class="contact-wrapper">
+<h1 data-key="title">Kontakt</h1>
+<form>
+<label class="block mb-1 font-semibold" data-key="form.name.label" for="name">Name</label>
+<input class="block w-full p-2 border border-gray-300 rounded" data-key="form.name.placeholder" id="name" name="name" placeholder="Ihr Name" type="text"/>
+<label class="block mb-1 font-semibold" data-key="form.email.label" for="email">E-Mail</label>
+<input class="block w-full p-2 border border-gray-300 rounded" data-key="form.email.placeholder" id="email" name="email" placeholder="Ihre E-Mail-Adresse" type="email"/>
+<label class="block mb-1 font-semibold" data-key="form.phone.label" for="phone">Telefon (optional)</label>
+<input class="block w-full p-2 border border-gray-300 rounded" data-key="form.phone.placeholder" id="phone" name="phone" placeholder="Ihre Telefonnummer" type="tel"/>
+<label class="block mb-1 font-semibold" data-key="form.message.label" for="message">Nachricht</label>
+<textarea class="block w-full p-2 border border-gray-300 rounded" data-key="form.message.placeholder" id="message" name="message" placeholder="Ihre Nachricht..."></textarea>
+<button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" data-key="form.submit" type="submit">Absenden</button>
+</form>
+</div>
+</main>
+<footer>
+<p>© <span id="year"></span> Residare. Alle Rechte vorbehalten.</p>
+</footer>
+<script src="translate.js"></script>
+<script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
     document.getElementById('menu-toggle').addEventListener('click', function () {
@@ -150,5 +174,5 @@
       loadLanguage(lang);
     });
   </script>
-</body>
+<script src="lang/translate.js"></script><script>document.addEventListener('DOMContentLoaded', applyTranslations);</script></body>
 </html>

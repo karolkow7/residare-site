@@ -1,41 +1,41 @@
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Adminbereich – Residare</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"/>
+<title>Adminbereich – Residare</title>
+<link href="style.css" rel="stylesheet"/>
 </head>
 <body>
-  <header>
-    <h1>Adminbereich</h1>
-  </header>
-  <main>
-    <section>
-      <h2>Login</h2>
-      <form id="login-form">
-        <label for="email">E-Mail:</label><br>
-        <input type="email" id="email" name="email"><br>
-        <label for="password">Passwort:</label><br>
-        <input type="password" id="password" name="password"><br><br>
-        <button type="submit">Einloggen</button>
-      </form>
-    </section>
-    <hr>
-    <section>
-      <h2>Neues Inserat erstellen</h2>
-      <form id="listing-form">
-        <label for="title">Titel:</label><br>
-        <input type="text" id="title" name="title"><br>
-        <label for="description">Beschreibung:</label><br>
-        <textarea id="description" name="description"></textarea><br>
-        <label for="address">Adresse:</label><br>
-        <input type="text" id="address" name="address"><br>
-        <label for="price">Preis (€):</label><br>
-        <input type="number" id="price" name="price"><br>
-        <label for="image">Bild-URL:</label><br>
-        <input type="url" id="image" name="image"><br><br>
-        <button type="submit">Inserat speichern</button>
-      </form>
-    </section>
-  </main>
-</body>
+<header>
+<h1>Adminbereich</h1>
+</header>
+<main>
+<section>
+<h2>Login</h2>
+<form id="login-form">
+<label for="email">E-Mail:</label><br/>
+<input id="email" name="email" type="email"/><br/>
+<label for="password">Passwort:</label><br/>
+<input id="password" name="password" type="password"/><br/><br/>
+<button type="submit">Einloggen</button>
+</form>
+</section>
+<hr/>
+<section>
+<h2>Neues Inserat erstellen</h2>
+<form id="listing-form">
+<label for="title">Titel:</label><br/>
+<input id="title" name="title" type="text"/><br/>
+<label for="description">Beschreibung:</label><br/>
+<textarea id="description" name="description"></textarea><br/>
+<label for="address">Adresse:</label><br/>
+<input id="address" name="address" type="text"/><br/>
+<label for="price">Preis (€):</label><br/>
+<input id="price" name="price" type="number"/><br/>
+<label for="image">Bild-URL:</label><br/>
+<input id="image" name="image" type="url"/><br/><br/>
+<button type="submit">Inserat speichern</button>
+</form>
+</section>
+</main>
+<script src="lang/translate.js"></script><script>document.addEventListener('DOMContentLoaded', applyTranslations);</script></body>
 </html>

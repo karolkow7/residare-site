@@ -67,3 +67,13 @@ h1, p {
   margin: 20px auto;
   max-width: 800px;
 }
+
+
+#language-selector {
+  font-size: 24px;
+  width: 64px;
+  padding: 4px 6px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
