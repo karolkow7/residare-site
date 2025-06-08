@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>Residare</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
   <style>
     body {
       margin: 0;
@@ -22,7 +23,7 @@
     }
     nav#main-nav {
       position: fixed;
-      top: 0;
+      top: 50px;
       left: -200px;
       width: 200px;
       height: 100%;
@@ -46,6 +47,7 @@
       position: absolute;
       top: 10px;
       right: 10px;
+      z-index: 1002;
     }
     .dropdown {
       position: relative;
@@ -91,6 +93,7 @@
       max-height: 300px;
       object-fit: cover;
       animation: zoomInOut 10s infinite alternate ease-in-out;
+      z-index: 1;
     }
     .hero-logo {
       position: absolute;
@@ -98,6 +101,7 @@
       left: 50%;
       transform: translateX(-50%);
       max-height: 80px;
+      z-index: 2;
     }
     @keyframes zoomInOut {
       0% { transform: scale(1); }
@@ -136,7 +140,7 @@
   <main>
     <div class="hero-wrapper">
       <img src="hero_gdansk.jpg" alt="Hero" class="hero-background">
-      <img src="logo.png" alt="Residare Logo" class="hero-logo">
+      <img src="logo_transparent.png" alt="Residare Logo" class="hero-logo">
     </div>
     <h1 data-key="title">Willkommen bei Residare</h1>
     <p data-key="subtitle">Finden Sie Ihr neues Zuhause in Polen oder Deutschland.</p>
