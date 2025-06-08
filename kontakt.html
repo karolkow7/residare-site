@@ -1,13 +1,12 @@
 
 <!DOCTYPE html>
-
 <html lang="de">
 <head>
-<meta charset="utf-8"/>
-<title>Residare – Kontakt</title>
-<link href="style.css" rel="stylesheet"/>
-<link href="favicon.png" rel="icon" type="image/png"/>
-<style>
+  <meta charset="UTF-8">
+  <title>Residare – Kontakt</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
     body { margin: 0; font-family: Arial, sans-serif; background: #f9f9f9; }
     .menu-toggle {
       position: absolute; top: 10px; left: 10px;
@@ -86,37 +85,53 @@
     }
   </style>
 </head>
-<body><div class="menu-toggle" onclick="toggleMenu()">☰</div>
-<button class="menu-toggle" id="menu-toggle">☰</button>
-<nav class="hidden" id="main-nav" style="position:absolute;top:60px;left:10px;">
-<a data-key="nav.home" href="index.html">Start</a>
-<a data-key="nav.listings" href="listings.html">Angebote</a>
-<a data-key="nav.faq" href="faq.html">FAQ</a>
-<a data-key="nav.contact" href="kontakt.html">Kontakt</a>
-<a data-key="nav.impressum" href="impressum.html">Impressum</a>
-</nav>
-<div class="language-dropdown"><div class="dropdown"><button class="dropdown-toggle"><img id="selected-flag" src="flags/flag_de.png"/></button><div class="dropdown-menu"><img alt="Deutsch" onclick="setLanguage('de')" src="flags/flag_de.png"/><img alt="Polski" onclick="setLanguage('pl')" src="flags/flag_pl.png"/></div></div></div>
-<main>
-<div class="contact-wrapper">
-<h1 data-key="title">Kontakt</h1>
-<form>
-<label data-key="form.name.label" for="name">Name</label>
-<input data-key="form.name.placeholder" id="name" name="name" placeholder="Ihr Name" type="text"/>
-<label data-key="form.email.label" for="email">E-Mail</label>
-<input data-key="form.email.placeholder" id="email" name="email" placeholder="Ihre E-Mail-Adresse" type="email"/>
-<label data-key="form.phone.label" for="phone">Telefon (optional)</label>
-<input data-key="form.phone.placeholder" id="phone" name="phone" placeholder="Ihre Telefonnummer" type="tel"/>
-<label data-key="form.message.label" for="message">Nachricht</label>
-<textarea data-key="form.message.placeholder" id="message" name="message" placeholder="Ihre Nachricht..."></textarea>
-<button data-key="form.submit" type="submit">Absenden</button>
-</form>
-</div>
-</main>
-<footer>
-<p>© <span id="year"></span> Residare. Alle Rechte vorbehalten.</p>
-</footer>
-<script src="translate.js"></script>
-<script>
+<body>
+  <button id="menu-toggle" class="menu-toggle">☰</button>
+  <nav id="main-nav">
+    <a href="index.html" data-key="nav.home">Start</a>
+    <a href="listings.html" data-key="nav.listings">Angebote</a>
+    <a href="faq.html" data-key="nav.faq">FAQ</a>
+    <a href="kontakt.html" data-key="nav.contact">Kontakt</a>
+    <a href="impressum.html" data-key="nav.impressum">Impressum</a>
+  </nav>
+
+  <div class="language-dropdown">
+    <div class="dropdown">
+      <button class="dropdown-toggle"><img id="selected-flag" src="flags/flag_de.png" alt="Sprache"></button>
+      <div class="dropdown-menu">
+        <img src="flags/flag_de.png" alt="Deutsch" onclick="setLanguage('de')">
+        <img src="flags/flag_pl.png" alt="Polski" onclick="setLanguage('pl')">
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <div class="contact-wrapper">
+      <h1 data-key="title">Kontakt</h1>
+      <form>
+        <label for="name" data-key="form.name.label">Name</label>
+        <input type="text" id="name" name="name" placeholder="Ihr Name" data-key="form.name.placeholder">
+
+        <label for="email" data-key="form.email.label">E-Mail</label>
+        <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" data-key="form.email.placeholder">
+
+        <label for="phone" data-key="form.phone.label">Telefon (optional)</label>
+        <input type="tel" id="phone" name="phone" placeholder="Ihre Telefonnummer" data-key="form.phone.placeholder">
+
+        <label for="message" data-key="form.message.label">Nachricht</label>
+        <textarea id="message" name="message" placeholder="Ihre Nachricht..." data-key="form.message.placeholder"></textarea>
+
+        <button type="submit" data-key="form.submit">Absenden</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Residare. Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <script src="translate.js"></script>
+  <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
     document.getElementById('menu-toggle').addEventListener('click', function () {

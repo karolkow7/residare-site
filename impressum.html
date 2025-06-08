@@ -1,12 +1,11 @@
 
 <!DOCTYPE html>
-
 <html lang="de">
 <head>
-<meta charset="utf-8"/>
-<title>Residare – Impressum</title>
-<link href="style.css" rel="stylesheet"/>
-<style>
+  <meta charset="UTF-8">
+  <title>Residare – Impressum</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
     body { margin: 0; font-family: Arial, sans-serif; }
     .menu-toggle {
       position: absolute;
@@ -104,31 +103,44 @@
     loadLanguage(lang);
   });
 </script>
+
 </head>
-<body><div class="menu-toggle" onclick="toggleMenu()">☰</div>
-<header>
-<button class="menu-toggle" id="menu-toggle">☰</button>
-<nav class="hidden" id="main-nav" style="position:absolute;top:60px;left:10px;">
-<a data-key="nav.home" href="index.html">Start</a>
-<a data-key="nav.listings" href="listings.html">Angebote</a>
-<a data-key="nav.faq" href="faq.html">FAQ</a>
-<a data-key="nav.contact" href="kontakt.html">Kontakt</a>
-<a data-key="nav.impressum" href="impressum.html">Impressum</a>
-</nav>
-<div class="language-dropdown"><div class="dropdown"><button class="dropdown-toggle"><img id="selected-flag" src="flags/flag_de.png"/></button><div class="dropdown-menu"><img alt="Deutsch" onclick="setLanguage('de')" src="flags/flag_de.png"/><img alt="Polski" onclick="setLanguage('pl')" src="flags/flag_pl.png"/></div></div></div>
+<body>
+  <header>
+    <button id="menu-toggle" class="menu-toggle">☰</button>
+    <nav id="main-nav">
+      <a href="index.html" data-key="nav.home">Start</a>
+      <a href="listings.html" data-key="nav.listings">Angebote</a>
+      <a href="faq.html" data-key="nav.faq">FAQ</a>
+      <a href="kontakt.html" data-key="nav.contact">Kontakt</a>
+      <a href="impressum.html" data-key="nav.impressum">Impressum</a>
+    </nav>
+  
+<div class="language-dropdown">
+  <div class="dropdown">
+    <button class="dropdown-toggle"><img id="selected-flag" src="flags/flag_de.png" alt="Sprache"></button>
+    <div class="dropdown-menu">
+      <img src="flags/flag_de.png" alt="Deutsch" onclick="setLanguage('de')">
+      <img src="flags/flag_pl.png" alt="Polski" onclick="setLanguage('pl')">
+    </div>
+  </div>
+</div>
+
 </header>
-<main>
-<h1 data-key="impressum.title">Impressum</h1>
-<p>Residare GmbH<br/>
-      Beispielstraße 1<br/>
-      12345 Musterstadt<br/>
+  
+    <main>
+      <h1 data-key="impressum.title">Impressum</h1>
+      <p>Residare GmbH<br>
+      Beispielstraße 1<br>
+      12345 Musterstadt<br>
       Deutschland</p>
-<p>E-Mail: kontakt@residare.com</p>
-</main>
-<footer>
-<p>© <span id="year"></span> Residare. Alle Rechte vorbehalten.</p>
-</footer>
-<script>
+      <p>E-Mail: kontakt@residare.com</p>
+    </main>
+        
+  <footer>
+    <p>&copy; <span id="year"></span> Residare. Alle Rechte vorbehalten.</p>
+  </footer>
+  <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     document.getElementById('menu-toggle').addEventListener('click', function () {
       document.getElementById('main-nav').classList.toggle('active');
