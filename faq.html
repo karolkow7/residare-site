@@ -1,27 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>FAQ – Residare</title>
+  <title>Residare</title>
   <link rel="stylesheet" href="style.css">
+  
+<style>
+  .menu-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+  }
+  nav.hidden {
+    display: none;
+  }
+  nav a {
+    display: block;
+    padding: 8px 0;
+    color: #333;
+    text-decoration: none;
+  }
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #666;
+  }
+</style>
+
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html" data-key="nav.home">Start</a>
-      <a href="listings.html" data-key="nav.listings">Angebote</a>
-      <a href="faq.html" data-key="nav.faq">FAQ</a>
-      <a href="kontakt.html" data-key="nav.contact">Kontakt</a>
-      <a href="impressum.html" data-key="nav.impressum">Impressum</a>
-    </nav>
-  </header>
-  <main>
-    <h1 data-key="faq.title">Häufige Fragen</h1>
-    <ul>
-      <li><strong data-key="faq.q1">Wie funktioniert Residare?</strong><br><span data-key="faq.a1">Sie durchsuchen zweisprachig Angebote und können Makler kontaktieren.</span></li>
-      <li><strong data-key="faq.q2">Kann ich mein Objekt selbst einstellen?</strong><br><span data-key="faq.a2">Ja, bald durch ein Makler-Login im Adminbereich.</span></li>
-    </ul>
-  </main>
+  
+<header>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <nav id="main-nav" class="hidden">
+    <a href="index.html" data-key="nav.home">Start</a>
+    <a href="listings.html" data-key="nav.listings">Angebote</a>
+    <a href="faq.html" data-key="nav.faq">FAQ</a>
+    <a href="kontakt.html" data-key="nav.contact">Kontakt</a>
+    <a href="impressum.html" data-key="nav.impressum">Impressum</a>
+  </nav>
+</header>
+
+  <main><h1 data-key='faq.title'>Häufige Fragen</h1></main>
+  
+<footer>
+  <p>&copy; <span id="year"></span> Residare. Alle Rechte vorbehalten.</p>
+</footer>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  function toggleMenu() {
+    const nav = document.getElementById("main-nav");
+    nav.classList.toggle("hidden");
+  }
+</script>
+
 </body>
 </html>
