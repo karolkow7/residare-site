@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Residare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" data-key="nav.home">Start</a>
+      <a href="listings.html" data-key="nav.listings">Angebote</a>
+      <a href="faq.html" data-key="nav.faq">FAQ</a>
+      <a href="kontakt.html" data-key="nav.contact">Kontakt</a>
+      <a href="impressum.html" data-key="nav.impressum">Impressum</a>
+      <div class="flags">
+        <img src="flags/flag_de.png" alt="Deutsch" onclick="loadLanguage('de')">
+        <img src="flags/flag_pl.png" alt="Polski" onclick="loadLanguage('pl')">
+      </div>
+    </nav>
+  </header>
+  <main>
+    <img src="logo.png" alt="Residare Logo" class="logo-center">
+    <img src="hero_gdansk.jpg" alt="Herobild Gdańsk" class="hero-center">
+    <h1 data-key="title">Willkommen bei Residare</h1>
+    <p data-key="subtitle">Finden Sie Ihr neues Zuhause in Polen oder Deutschland.</p>
+    <div id="map" style="height: 400px;"></div>
+  </main>
+  <script src="map.js"></script>
+  <script src="translate.js"></script>
+</body>
+</html>
