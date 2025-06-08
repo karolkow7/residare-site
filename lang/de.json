@@ -1,0 +1,31 @@
+
+{
+  "title": "Willkommen bei Residare",
+  "subtitle": "Finden Sie Ihr neues Zuhause in Polen oder Deutschland.",
+  "nav": {
+    "home": "Start",
+    "listings": "Angebote",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "impressum": "Impressum"
+  },
+  "list": { "title": "Immobilienangebote" },
+  "faq": {
+    "title": "Häufige Fragen",
+    "q1": "Wie funktioniert der Immobilienkauf in Polen?",
+    "a1": "Sie benötigen einen Notar und eine Übersetzung des Vertrags.",
+    "q2": "Kann ich als Deutscher in Polen ein Haus kaufen?",
+    "a2": "Ja, grundsätzlich ist das möglich, besonders bei Wohnungen."
+  },
+  "contact": {
+    "title": "Kontaktformular",
+    "name": "Name:",
+    "email": "E-Mail:",
+    "message": "Nachricht:",
+    "send": "Senden"
+  },
+  "impressum": {
+    "title": "Impressum",
+    "content": "Residare Immobilienportal\nMusterstraße 1\n12345 Musterstadt\nDeutschland"
+  }
+}

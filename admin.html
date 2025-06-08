@@ -1,0 +1,41 @@
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Adminbereich – Residare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Adminbereich</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Login</h2>
+      <form id="login-form">
+        <label for="email">E-Mail:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="password">Passwort:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit">Einloggen</button>
+      </form>
+    </section>
+    <hr>
+    <section>
+      <h2>Neues Inserat erstellen</h2>
+      <form id="listing-form">
+        <label for="title">Titel:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="description">Beschreibung:</label><br>
+        <textarea id="description" name="description"></textarea><br>
+        <label for="address">Adresse:</label><br>
+        <input type="text" id="address" name="address"><br>
+        <label for="price">Preis (€):</label><br>
+        <input type="number" id="price" name="price"><br>
+        <label for="image">Bild-URL:</label><br>
+        <input type="url" id="image" name="image"><br><br>
+        <button type="submit">Inserat speichern</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

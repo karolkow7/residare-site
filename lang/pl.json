@@ -1,0 +1,31 @@
+
+{
+  "title": "Witamy w Residare",
+  "subtitle": "Znajdź swój nowy dom w Polsce lub Niemczech.",
+  "nav": {
+    "home": "Strona główna",
+    "listings": "Oferty",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "impressum": "Informacje prawne"
+  },
+  "list": { "title": "Oferty nieruchomości" },
+  "faq": {
+    "title": "Często zadawane pytania",
+    "q1": "Jak działa zakup nieruchomości w Polsce?",
+    "a1": "Potrzebujesz notariusza i tłumaczenia umowy.",
+    "q2": "Czy Niemiec może kupić dom w Polsce?",
+    "a2": "Tak, zwłaszcza jeśli chodzi o mieszkania."
+  },
+  "contact": {
+    "title": "Formularz kontaktowy",
+    "name": "Imię i nazwisko:",
+    "email": "E-mail:",
+    "message": "Wiadomość:",
+    "send": "Wyślij"
+  },
+  "impressum": {
+    "title": "Informacje prawne",
+    "content": "Portal nieruchomości Residare\nul. Przykładowa 1\n12-345 Przykładowo\nNiemcy"
+  }
+}
