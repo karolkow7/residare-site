@@ -6,6 +6,50 @@
   <title>Residare – Impressum</title>
   <link rel="stylesheet" href="style.css">
   <style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .menu-toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    background: none;
+    border: none;
+  }
+  nav#main-nav {
+    position: fixed;
+    top: 0;
+    left: -200px;
+    width: 200px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    padding: 20px;
+    box-sizing: border-box;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  nav#main-nav.active {
+    left: 0;
+  }
+  nav#main-nav a {
+    display: block;
+    margin: 10px 0;
+    color: #333;
+    text-decoration: none;
+  }
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #666;
+  }
+</style>
     .menu-toggle {
   position: absolute;
   top: 10px;
@@ -42,7 +86,7 @@
 </head>
 <body>
   <header>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <button id="menu-toggle" class="menu-toggle" onclick="toggleMenu()">☰</button>
     <nav id="main-nav" class="hidden">
       <a href="index.html" data-key="nav.home">Start</a>
       <a href="listings.html" data-key="nav.listings">Angebote</a>
@@ -68,6 +112,13 @@
       const nav = document.getElementById("main-nav");
       nav.classList.toggle("hidden");
     }
-  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      document.getElementById('main-nav').classList.toggle('active');
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  });
+</script></script>
 </body>
 </html>
