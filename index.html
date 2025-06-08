@@ -11,14 +11,13 @@
       top: 10px;
       right: 10px;
     }
-    .language-dropdown select {
-      background: none;
-      border: none;
-      font-size: 24px;
+    .language-dropdown img {
+      width: 32px;
+      height: 24px;
+      margin-left: 8px;
       cursor: pointer;
-    }
-    .language-dropdown option {
-      font-size: 20px;
+      border: 1px solid #ccc;
+      border-radius: 2px;
     }
   </style>
 </head>
@@ -32,10 +31,8 @@
       <a href="impressum.html" data-key="nav.impressum">Impressum</a>
     </nav>
     <div class="language-dropdown">
-      <select onchange="loadLanguage(this.value)">
-        <option value="de">🇩🇪</option>
-        <option value="pl">🇵🇱</option>
-      </select>
+      <img src="flags/flag_de.png" alt="Deutsch" onclick="setLanguage('de')">
+      <img src="flags/flag_pl.png" alt="Polski" onclick="setLanguage('pl')">
     </div>
   </header>
   <main>
@@ -50,15 +47,12 @@
   <script src="map.js"></script>
   <script src="translate.js"></script>
   <script>
-    // Sprache beim Laden setzen (default: deutsch)
     document.addEventListener("DOMContentLoaded", function () {
       const lang = localStorage.getItem("lang") || "de";
-      document.querySelector("select").value = lang;
-      loadLanguage(lang);
+      setLanguage(lang);
     });
 
-    // Sprache wechseln und merken
-    function loadLanguage(lang) {
+    function setLanguage(lang) {
       fetch('lang/' + lang + '.json')
         .then(res => res.json())
         .then(data => {
