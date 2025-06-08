@@ -1,11 +1,69 @@
 
+<!DOCTYPE html>
 <html lang="de">
-<head><meta charset="UTF-8"><title>Listings</title></head>
+<head>
+  <meta charset="UTF-8">
+  <title>Residare – Immobilienangebote</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
-<h1 data-key="list.title">Immobilienangebote</h1>
-<div class="listing" data-id="wrzeszcz">🏠 Wrzeszcz, 3-Zimmer-Wohnung, 350.000 PLN</div>
-<div class="listing" data-id="oliwa">🏡 Oliwa, Einfamilienhaus, 950.000 PLN</div>
-<div class="listing" data-id="srodmiescie">🏢 Śródmieście, Altbauwohnung, 420.000 PLN</div>
-<div id="map" style="height: 400px;"></div>
+  <header>
+    <nav>
+      <a href="index.html" data-key="nav.home">Start</a>
+      <a href="listings.html" data-key="nav.listings">Angebote</a>
+      <a href="faq.html" data-key="nav.faq">FAQ</a>
+      <a href="kontakt.html" data-key="nav.contact">Kontakt</a>
+      <a href="impressum.html" data-key="nav.impressum">Impressum</a>
+    </nav>
+  </header>
+  <main>
+    <h1 data-key="title">Immobilienangebote</h1>
+    <div id="map" style="height: 400px; margin-bottom: 30px;"></div>
+    <div class="listings">
+      <div class="listing" data-lat="54.3849" data-lng="18.5913">
+        <h2><a href="#">Moderne Wohnung in Wrzeszcz</a></h2>
+        <p>3 Zimmer · 78 m² · 429.000 PLN</p>
+      </div>
+      <div class="listing" data-lat="54.4100" data-lng="18.5600">
+        <h2><a href="#">Familienhaus in Oliwa</a></h2>
+        <p>5 Zimmer · 145 m² · 899.000 PLN</p>
+      </div>
+      <div class="listing" data-lat="54.3520" data-lng="18.6466">
+        <h2><a href="#">Altbauwohnung in der Altstadt</a></h2>
+        <p>2 Zimmer · 55 m² · 529.000 PLN</p>
+      </div>
+    </div>
+  </main>
+  <script>
+    let map;
+    let markers = [];
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 54.3721, lng: 18.6383 },
+        zoom: 13,
+      });
+
+      document.querySelectorAll(".listing").forEach((el) => {
+        const lat = parseFloat(el.getAttribute("data-lat"));
+        const lng = parseFloat(el.getAttribute("data-lng"));
+        const title = el.querySelector("h2").innerText;
+
+        const marker = new google.maps.Marker({
+          position: { lat, lng },
+          map,
+          title,
+        });
+
+        el.addEventListener("mouseenter", () => marker.setAnimation(google.maps.Animation.BOUNCE));
+        el.addEventListener("mouseleave", () => marker.setAnimation(null));
+
+        markers.push(marker);
+      });
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+  </script>
 </body>
 </html>
