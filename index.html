@@ -134,7 +134,38 @@
 </div>
 </div>
 </div>
-<select class="ml-auto" id="language-selector"><option value="de">🇩🇪</option><option value="pl">🇵🇱</option></select></header>
+
+<div class="relative ml-auto">
+<button class="flex items-center gap-2 border border-gray-300 px-3 py-1 rounded hover:bg-gray-100" id="lang-toggle">
+<img alt="Deutsch" class="h-4 w-auto" id="lang-flag" src="flags/flag_de.png"/>
+<span class="text-sm">Sprache</span>
+<svg class="w-3 h-3 ml-1" viewbox="0 0 20 20"><path d="M5.5 7l4.5 4 4.5-4z" fill="currentColor"></path></svg>
+</button>
+<div class="absolute right-0 mt-1 hidden bg-white border border-gray-300 rounded shadow-lg z-10" id="lang-menu">
+<div class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('de'); toggleLangMenu();">
+<img alt="Deutsch" class="h-4 w-auto" src="flags/flag_de.png"/>
+<span>Deutsch</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('pl'); toggleLangMenu();">
+<img alt="Polski" class="h-4 w-auto" src="flags/flag_pl.png"/>
+<span>Polski</span>
+</div>
+</div>
+</div>
+<script>
+  function toggleLangMenu() {
+    const menu = document.getElementById('lang-menu');
+    menu.classList.toggle('hidden');
+  }
+  document.addEventListener('click', function(event) {
+    const toggle = document.getElementById('lang-toggle');
+    const menu = document.getElementById('lang-menu');
+    if (!toggle.contains(event.target)) {
+      menu.classList.add('hidden');
+    }
+  });
+</script>
+</header>
 <main>
 <div class="hero-wrapper">
 <img alt="Hero" class="hero-background" src="hero_gdansk.jpg"/>
